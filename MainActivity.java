@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     int min;
     CountDownTimer countDownTimer;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     control.setText("STOP");
                     startScreen = false;
 
+                    //100 i.e. 1th of second added to keep the timer in sychro as the actual time it takes to go through the code is somewhat 8500
+                    //milliseconds for 9000 milliseconds so we add the 100 millis
                     countDownTimer=new CountDownTimer((min*60+sec)*1000+100,1000)
                     {
 
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             min= (int) (total_sec/60);
                             sec=(int) (total_sec%60);
                             counter.setText(min+":"+sec);
-                            Log.i("value is",Long.toString(l));
+
                         }
 
                         @Override
@@ -120,10 +124,12 @@ public class MainActivity extends AppCompatActivity {
                     seekBar.setProgress(30);
                     control.setText("GO!");
 
-                    min=0;
-                    sec=30;
+
+                    //min=0;
+                    //sec=30;
                     countDownTimer.cancel();
                     counter.setText(min+":"+sec);
+
                 }
             }
         });
